@@ -14,6 +14,8 @@ namespace hetfo
             //8
             Console.WriteLine($"8. feladat: Napi Bevétel : {2400 * (rentals.Sum(ob => ob.IdoHossz() / 30 + 1))}");
 
+            searchSuspect();
+
             //10.
             Console.WriteLine("10. feladat: Statisztika");
             rentals.GroupBy(x => x.Jazon).OrderBy(x => x.Key).ToList().ForEach(x => Console.WriteLine($"{x.Key} - {x.Count()}"));
@@ -94,6 +96,20 @@ namespace hetfo
                     Console.WriteLine($"{item.EOra}:{item.EPerc}-{item.VOra}:{item.VPerc} : {item.Nev}");
                 }
             }
+        }
+
+        static void searchSuspect()
+        {
+            StreamWriter sw = new StreamWriter("txt.txt");
+            foreach (var item in rentals)
+            {
+                if (item.Jazon == 'F')
+                {
+                    sw.WriteLine($"{item.EOra}:{item.EPerc}-{item.VOra}:{item.VPerc} : {item.Nev}");
+                    Console.WriteLine(($"{item.EOra}:{item.EPerc}-{item.VOra}:{item.VPerc} : {item.Nev}"));
+                }
+            }
+            sw.Close();
         }
 
     }

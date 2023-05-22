@@ -28,7 +28,7 @@ namespace hetfo
 
         public int IdoHossz()
         {
-            return VOra * 60 + VPerc - EOra * 60 - EPerc;
+            return VOra * 60 + VPerc - EOra * 60 + EPerc;
         }
 
         public Kolcsonzes(string nev, char jazon, int eOra, int ePerc, int vOra, int vPerc)
